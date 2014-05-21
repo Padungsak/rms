@@ -56,7 +56,9 @@ class Rooms_manage extends Secure_area implements iData_controller
     
     function search()
     {
-
+        $search=$this->input->post('search');
+        $data_rows=get_rooms_manage_table_data_rows($this->Room->search($search),$this);
+        echo $data_rows;
     }
     
     function delete()
@@ -66,7 +68,7 @@ class Rooms_manage extends Secure_area implements iData_controller
     
     function suggest()
     {
-
+        $aaa=1;
     }
     
     function view($room_id=-1)

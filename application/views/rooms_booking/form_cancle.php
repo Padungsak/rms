@@ -1,17 +1,16 @@
 <?php
-echo form_open('rooms_booking/save/'.$booking_info->booking_id,array('id'=>'room_book_form'));
+echo form_open('rooms_booking/room_cancle/'.$booking_info->booking_id,array('id'=>'room_cancle_form'));
 ?>
 
-<?php echo form_hidden('room_id',$room_id); ?>
-<?php echo form_hidden('booking_type'); ?>
+<?php echo form_hidden('is_cancle_booking'); ?>
 <table>
     <tr>
         <td>
             <?php
                 echo form_submit(array(
-                    'name'=>'temp_booking',
-                    'id'=>'temp_booking',
-                    'value'=>$this->lang->line('room_booking_temporaly_booking'),
+                    'name'=>'ok',
+                    'id'=>'ok',
+                    'value'=>$this->lang->line('room_booking_ok_caption'),
                     'class'=>'big_button')
                 );
             ?>
@@ -21,15 +20,16 @@ echo form_open('rooms_booking/save/'.$booking_info->booking_id,array('id'=>'room
         <td>
             <?php
                 echo form_submit(array(
-                    'name'=>'night_booking',
-                    'id'=>'night_booking',
-                    'value'=>$this->lang->line('room_booking_night_booking'),
+                    'name'=>'calcle',
+                    'id'=>'cancle',
+                    'value'=>$this->lang->line('room_booking_cancle_caption'),
                     'class'=>'big_button')
                 );
             ?>
         </td>  
     </tr>
 </table>
+
 <?php
 echo form_close();
 ?>
@@ -37,17 +37,17 @@ echo form_close();
 <script type='text/javascript'>
 $(document).ready(function()
 {
-    $('#temp_booking').click(function()
+    $('#ok').click(function()
     {
-        this.form.elements["booking_type"].value = 'temporaly';      
+        this.form.elements["is_cancle_booking"].value = 'ok';      
     });
     
-    $('#night_booking').click(function()
+    $('#cancle').click(function()
     {
-        this.form.elements["booking_type"].value = 'night';      
+        this.form.elements["is_cancle_booking"].value = 'cancle';      
     });
     
-    $('#room_book_form').validate({
+    $('#room_cancle_form').validate({
         submitHandler:function(form)
         {
             $(form).ajaxSubmit({

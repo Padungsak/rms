@@ -11,10 +11,39 @@ class Booking_detail extends CI_Model
         return ($query->num_rows()==1);
     }
     
+    function get_info($booking_id)
+    {
+        $this->db->from('booking_detail');         
+        $this->db->where('booking_id',$booking_id);
+        $query = $this->db->get();
+        
+        if($query->num_rows()==1)
+        {
+            return $query->row();
+        }
+        else
+        {
+            //Get empty base parent object, as $customer_id is NOT an customer
+            $person_obj=parent::get_info(-1);
+            
+            //Get all the fields from customer table
+            $fields = $this->db->list_fields('booking_detail');
+            
+            //append those fields to base parent object, we we have a complete empty object
+            foreach ($fields as $field)
+            {
+                $person_obj->$field='';
+            }
+            
+            return $person_obj;
+        }
+    }
+    
     function get_room_booking($room_id)
     {
         $this->db->from('booking_detail');
         $this->db->where('room_id',$room_id);
+        $this->db->where('booking_status','open');
         
         $query = $this->db->get();
 
@@ -24,16 +53,7 @@ class Booking_detail extends CI_Model
         }
         else
         {
-            $room_obj=new stdClass();
-
-            $fields = $this->db->list_fields('booking_detail');
-
-            foreach ($fields as $field)
-            {
-                $room_obj->$field='';
-            }
-
-            return $room_obj;
+            return false;
         }
     }
     
@@ -51,6 +71,12 @@ class Booking_detail extends CI_Model
 
         $this->db->where('booking_id', $room_id);
         return $this->db->update('booking_detail',$room_data);
+    }
+    
+    function update_booking_status($booking_id, $status)
+    {
+        $this->db->where('booking_id', $booking_id);
+        $this->db->update('booking_detail', array('booking_status' => $status));
     }
 }
 ?>

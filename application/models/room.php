@@ -86,6 +86,14 @@ class Room extends CI_Model
         return $this->db->delete('rooms', array('room_id' => $room_id)); 
     } 
 
+    function search()
+    {
+        $this->db->from('rooms');
+        $this->db->like("name",$this->db->escape_like_str($search));
+        $this->db->or_like("description",$this->db->escape_like_str($search));
+        $this->db->order_by("name", "asc");
+        return $this->db->get();
+    }
 }
 
 ?>

@@ -1,6 +1,11 @@
 <?php $this->load->view("partial/header"); ?>
 <script type="text/javascript">
-function post_room_form_submit(response)
+$(document).ready(function()
+{
+    enable_search('<?php echo site_url("$controller_name/suggest")?>','<?php echo $this->lang->line("common_confirm_search")?>'); 
+});
+
+function post_room_book_form_submit(response)
 {
     if(!response.success)
     {
@@ -9,9 +14,9 @@ function post_room_form_submit(response)
     else
     {
         //This is an update, just update one row
-        if(jQuery.inArray(response.room_id,get_visible_checkbox_ids()) != -1)
+        if(jQuery.inArray(response.booking_id,get_visible_checkbox_ids()) != -1)
         {
-            update_row(response.room_id,'<?php echo site_url("$controller_name/get_row")?>');
+            update_row(response.booking_id,'<?php echo site_url("$controller_name/get_row")?>');
             set_feedback(response.message,'success_message',false);
 
         }
@@ -20,7 +25,7 @@ function post_room_form_submit(response)
             do_search(true,function()
             {
                 //highlight new row
-                hightlight_row(response.room_id);
+                hightlight_row(response.booking_id);
                 set_feedback(response.message,'success_message',false);
             });
         }
@@ -29,9 +34,12 @@ function post_room_form_submit(response)
 </script>
 
 <div id="title_bar">
-	<div id="table_action_header" class="float_left"><?php echo $this->lang->line('room_booking_booking_time').' '.date('g.i a'); ?></div>
+    <div id="title" class="float_left"><?php echo $this->lang->line('room_booking_booking_time').' '.date('g.i a'); ?></div>
 </div>
 
+<?php echo form_open("$controller_name/search",array('id'=>'search_form')); ?>     
+</form>
+        
 <script src="<?php echo base_url();?>js/countdown.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
 <div id="table_holder">
 <?php echo $manage_table; ?>

@@ -447,9 +447,13 @@ function get_rooms_booking_table( $rooms, $controller )
             {
 
                 $table.="<td>";               
-                $table.=anchor($controller_name."/book_new_room/$room->room_id/width:120/height:120", 
+                $table.=anchor($controller_name."/room_manage_view/$room->room_id/width:120/height:120", 
                                 get_room_booking_style($room->room_id, $controller),
-                                array('class'=>'thickbox','title'=>$CI->lang->line($controller_name.'_update')));
+                                array('id'=>$room->name,'class'=>'thickbox','title'=>$CI->lang->line($controller_name.'_update')));
+                
+                $table.= $CI->lang->line('room_booking_temporaly_booking_price').$room->tempPrice;
+                $table.="<br>";
+                $table.= $CI->lang->line('room_booking_night_booking_price').$room->nightPrice;
                 $table.="</td>";
                 $item_number++;
             }
@@ -472,8 +476,33 @@ function get_rooms_booking_table( $rooms, $controller )
 
 function get_room_booking_style($room_id, $controller)
 {
-    $controller->Booking_detail->get_room_booking($room_id);
-    $room_style = "<div class='room_button'></div>";
+    $CI =& get_instance();
+    $booking_detail = $controller->Booking_detail->get_room_booking($room_id); 
+    $room_style = "<div class='room_button'>";
+    $current_time = new DateTime();
+    $end_time = new DateTime($booking_detail->end_time);   
+    if(($booking_detail->booking_status == 'open') and 
+        ($end_time > $current_time))
+    {
+        $interval = $end_time->getTimestamp() - $current_time->getTimestamp();
+        $check_out_url = $CI->config->base_url().'index.php/rooms_booking/room_check_out/'.$booking_detail->booking_id;
+        $room_style .=  "<script type=\"text/javascript\">
+                         var myCountdownTest = new Countdown({
+                                   time: $interval,
+                                   width   : 70, 
+                                   height  : 40,
+                                   style   : \"flip\",
+                                   inline  : true, 
+                                   rangeHi : \"hour\",
+                                   rangeLo : \"second\", 
+                                   onComplete : function(result) {
+                                                                    $.get('$check_out_url',
+                                                                    function(data,status) {location.reload();},'html');
+                                                                 }
+                                    });
+                         </script>";      
+    }
+    $room_style .= "</div>";
     return $room_style;
 }
 ?>
