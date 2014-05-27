@@ -8,6 +8,7 @@ class Room extends CI_Model
     {
         $this->db->from('rooms');
         $this->db->where('room_id',$room_id);
+        $this->db->where('deleted',0);
         $query = $this->db->get();
 
         return ($query->num_rows()==1);
@@ -19,6 +20,7 @@ class Room extends CI_Model
     {
         $this->db->from('rooms');
         $this->db->where('room_id',$room_id);
+        $this->db->where('deleted',0);
         
         $query = $this->db->get();
 
@@ -46,7 +48,8 @@ class Room extends CI_Model
     */
     function get_all($limit=10000, $offset=0)
     {
-        $this->db->from('rooms');       
+        $this->db->from('rooms');
+        $this->db->where('deleted',0);       
         $this->db->order_by("name", "asc");
         $this->db->limit($limit);
         $this->db->offset($offset);
@@ -55,7 +58,8 @@ class Room extends CI_Model
     
     function count_all()
     {
-        $this->db->from('rooms');       
+        $this->db->from('rooms');
+        $this->db->where('deleted',0);       
         return $this->db->count_all_results();
     }
     
@@ -78,21 +82,33 @@ class Room extends CI_Model
         return $this->db->update('rooms',$room_data);
     }
 
-    /*
-    Deletes unit given an item
-    */
-    public function delete($room_id)
-    {
-        return $this->db->delete('rooms', array('room_id' => $room_id)); 
-    } 
 
-    function search()
+    function search($search)
     {
         $this->db->from('rooms');
-        $this->db->like("name",$this->db->escape_like_str($search));
-        $this->db->or_like("description",$this->db->escape_like_str($search));
+        if($search != null)
+        {
+            $this->db->like('name',$this->db->escape_like_str($search));
+            $this->db->or_like('description',$this->db->escape_like_str($search));    
+        }                
+        $this->db->where('deleted',0);   
         $this->db->order_by("name", "asc");
         return $this->db->get();
+    }
+    
+
+    function delete_list($room_ids)
+    {
+        $success=false;
+        
+        //Run these queries as a transaction, we want to make sure we do all or nothing
+        $this->db->trans_start();
+
+        $this->db->where_in('room_id',$room_ids);
+        $success = $this->db->update('rooms', array('deleted' => 1));
+       
+        $this->db->trans_complete();        
+        return $success;
     }
 }
 

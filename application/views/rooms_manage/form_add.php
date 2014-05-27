@@ -70,7 +70,7 @@ echo form_open('rooms_manage/save/'.$room_info->room_id,array('id'=>'room_add_fo
         'name'=>'status',
         'id'=>'status',
         'value'=>1,
-        'checked'=>($item_info->status)? 1  :0)
+        'checked'=>($room_info->status)? 1  :0)
     );?>
     </div>
 </div>

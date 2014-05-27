@@ -47,14 +47,14 @@ class Rooms_booking extends Secure_area
 
         if( $this->Booking_detail->save( $booking_data, $booking_id ) )
         {
-            echo json_encode(array('success'=>true,'message'=>$this->lang->line('room_booking_successful_booking').' '.
+            echo json_encode(array('success'=>true,'message'=>$this->lang->line('rooms_booking_successful_booking').' '.
             $room_info->name,'booking_id'=>$booking_data['booking_id']));
             $booking_id = $booking_data['booking_id'];
 
         }
         else//failure
         {
-            echo json_encode(array('success'=>false,'message'=>$this->lang->line('room_booking_error_adding_updating').' '.
+            echo json_encode(array('success'=>false,'message'=>$this->lang->line('rooms_booking_error_adding_updating').' '.
             $room_info['name'],'booking_id'=>-1));
         }
     }
@@ -77,8 +77,9 @@ class Rooms_booking extends Secure_area
     
     function search()
     {
-       $data_rows=get_rooms_booking_table( $this->Room->get_all(), $this );
-       echo $data_rows;
+        $search=$this->input->post('search');
+        $data_rows=get_rooms_booking_table( $this->Room->get_all(), $this );
+        echo $data_rows;
     }  
     
     function room_check_out($booking_id)
@@ -94,7 +95,7 @@ class Rooms_booking extends Secure_area
             $this->Booking_detail->update_booking_status($booking_id, 'close');
             $booking_info = $this->Booking_detail->get_info($booking_id);
             $room = $this->Room->get_info($booking_info->room_id);
-            echo json_encode(array('success'=>true,'message'=>$this->lang->line('room_booking_successful_calcle').' '.$room->name));
+            echo json_encode(array('success'=>true,'message'=>$this->lang->line('rooms_booking_successful_calcle').' '.$room->name));
         }
         else 
         {

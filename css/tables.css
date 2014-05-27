@@ -52,6 +52,33 @@
 	border: 1px solid #999;
 }
 
+#table_room_report_header
+{
+	position:relative;
+	width:100%;
+	background-color:#EEEEEE;
+	height:20px;
+	border-top:1px solid #CCCCCC;	
+	background-position:5px 10px;
+	background-repeat:no-repeat;	
+	padding:3px 0px 7px 0px;
+}
+
+#table_room_report_header tbody tr td span
+{
+	background-color:#0a6184;
+	border:2px solid #DDDDDD;
+	font-size:14px;
+	padding:2px 5px 2px 5px;
+	
+}
+
+#table_room_report_header a
+{
+	text-decoration:none;
+	color:#FFF;	
+}
+
 table.tablesorter 
 {
 	position:relative;

@@ -19,10 +19,10 @@ $lang['module_rooms_manage_desc']='Add, Update and Delete Rooms';
 $lang['module_rooms_booking']='Rooms booking';
 $lang['module_rooms_booking_desc']='Booking or cancle Rooms';
 
-$lang['module_my_booking']='My booking';
-$lang['module_my_booking_desc']='View employee booking report';
+$lang['module_my_booking']='My booking record';
+$lang['module_my_booking_desc']='View employee booking record report';
 
-$lang['module_booking_management']='Booking management';
-$lang['module_booking_management_desc']='View admin booking report';
+$lang['module_all_booking']='All booking record';
+$lang['module_all_booking_desc']='View admin booking record report';
 
 ?>

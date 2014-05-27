@@ -44,7 +44,7 @@ class Rooms_manage extends Secure_area implements iData_controller
             else //previous room
             {
                 echo json_encode(array('success'=>true,'message'=>$this->lang->line('rooms_manage_successful_updating').' '.
-                $room_data['name'],'room_id'=>$room_id));
+                $room_data['name'],'room_id'=>$room_data['room_id']));
             }
         }
         else//failure
@@ -63,7 +63,17 @@ class Rooms_manage extends Secure_area implements iData_controller
     
     function delete()
     {
+        $rooms_to_delete=$this->input->post('ids');
 
+        if($this->Room->delete_list($rooms_to_delete))
+        {
+            echo json_encode(array('success'=>true,'message'=>$this->lang->line('rooms_manage_successful_deleted').' '.
+            count($rooms_to_delete).' '.$this->lang->line('rooms_manage_one_or_multiple')));
+        }
+        else
+        {
+            echo json_encode(array('success'=>false,'message'=>$this->lang->line('giftcards_cannot_be_deleted')));
+        }
     }
     
     function suggest()

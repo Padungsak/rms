@@ -340,12 +340,12 @@ function get_room_data_row($room,$controller)
     $table_data_row='<tr>';
     $table_data_row.="<td width='3%'><input type='checkbox' id='room_$room->room_id' value='".$room->room_id."'/></td>";
     $table_data_row.='<td width="10%">'.$room->name.'</td>';
-    $table_data_row.='<td width="30%">'.$room->description.'</td>';
+    $table_data_row.='<td width="25%">'.$room->description.'</td>';
     $table_data_row.='<td width="10%">'.$room->tempPrice.'</td>';
     $table_data_row.='<td width="20%">'.$room->temp_duration.'</td>';
     $table_data_row.='<td width="10%">'.$room->nightPrice.'</td>';
-    $table_data_row.='<td width="5%">'.$room->status.'</td>';
-    $table_data_row.='<td width="7%">'.anchor($controller_name."/view/$room->room_id/width:$width", $CI->lang->line('common_edit'),array('class'=>'thickbox','title'=>$CI->lang->line($controller_name.'_update'))).'</td>';        
+    $table_data_row.='<td width="12%">'.(($room->status==1) ? $CI->lang->line('rooms_manage_available'):$CI->lang->line('rooms_manage_not_available')).'</td>';
+    $table_data_row.='<td width="5%">'.anchor($controller_name."/view/$room->room_id/width:$width", $CI->lang->line('common_edit'),array('class'=>'thickbox','title'=>$CI->lang->line($controller_name.'_update'))).'</td>';        
     
     $table_data_row.='</tr>';
     return $table_data_row;
@@ -380,13 +380,17 @@ function get_rooms_booking_table( $rooms, $controller )
             {
 
                 $table.="<td>";               
-                $table.=anchor($controller_name."/room_manage_view/$room->room_id/width:120/height:120", 
-                                get_room_booking_style($room->room_id, $controller),
-                                array('id'=>$room->name,'class'=>'thickbox','title'=>$CI->lang->line($controller_name.'_update')));
-                
-                $table.= $CI->lang->line('room_booking_temporaly_booking_price').$room->tempPrice;
+                $table.=anchor($controller_name."/room_manage_view/$room->room_id/width:200/height:120", 
+                                get_rooms_booking_style($room->room_id, $controller),
+                                array('id'=>$room->name,
+                                'class'=>'thickbox',
+                                'title'=>$CI->lang->line($controller_name.'_update')));
+
+                $table.= $CI->lang->line('rooms_booking_room_name').$room->name;
                 $table.="<br>";
-                $table.= $CI->lang->line('room_booking_night_booking_price').$room->nightPrice;
+                $table.= $CI->lang->line('rooms_booking_temporaly_booking_price').$room->tempPrice;
+                $table.="<br>";
+                $table.= $CI->lang->line('rooms_booking_night_booking_price').$room->nightPrice;
                 $table.="</td>";
                 $item_number++;
             }
@@ -407,17 +411,24 @@ function get_rooms_booking_table( $rooms, $controller )
     return $table;
 }
 
-function get_room_booking_style($room_id, $controller)
+function get_rooms_booking_style($room_id, $controller)
 {
     $CI =& get_instance();
     $booking_detail = $controller->Booking_detail->get_room_booking($room_id); 
     $room_style = "<div class='room_button'>";
     $current_time = new DateTime();
     $end_time = new DateTime($booking_detail->end_time);   
-    if(($booking_detail->booking_status == 'open') and 
-        ($end_time > $current_time))
+    if($booking_detail->booking_status == 'open')
     {
-        $interval = $end_time->getTimestamp() - $current_time->getTimestamp();
+        $interval;
+        if($end_time > $current_time)
+        {
+            $interval = $end_time->getTimestamp() - $current_time->getTimestamp();
+        }
+        else 
+        {
+            $interval = 0;
+        }        
         $check_out_url = $CI->config->base_url().'index.php/rooms_booking/room_check_out/'.$booking_detail->booking_id;
         $room_style .=  "<script type=\"text/javascript\">
                          var myCountdownTest = new Countdown({
@@ -438,4 +449,61 @@ function get_room_booking_style($room_id, $controller)
     $room_style .= "</div>";
     return $room_style;
 }
+
+
+function get_booking_report_table($booking_detail,$controller)
+{
+    $CI =& get_instance();
+    $table='<table class="tablesorter" id="sortable_table">';
+    
+    $headers = array($CI->lang->line('reports_date'),
+    $CI->lang->line('reports_room_name'),
+    $CI->lang->line('reports_booking_type'),
+    $CI->lang->line('reports_price'),
+    $CI->lang->line('reports_booked_by')
+    );
+    
+    $table.='<thead><tr>';
+    foreach($headers as $header)
+    {
+        $table.="<th>$header</th>";
+    }
+    $table.='</tr></thead><tbody>';
+    $table.=get_booking_report_manage_table_data_rows($booking_detail,$controller);
+    $table.='</tbody></table>';
+    return $table;
+}
+
+
+function get_booking_report_manage_table_data_rows($booking_detail,$controller)
+{
+    $CI =& get_instance();
+    $table_data_rows='';
+    
+    foreach($booking_detail->result() as $booking)
+    {
+        $table_data_rows.=get_booking_report_data_row($booking,$controller);
+    }
+    
+    if($booking_detail->num_rows()==0)
+    {
+        $table_data_rows.="<tr><td colspan='11'><div class='warning_message' style='padding:7px;'>".$CI->lang->line('reports_no_items_to_display')."</div></tr></tr>";
+    }
+    
+    return $table_data_rows;
+}
+
+function get_booking_report_data_row($booking,$controller)
+{
+    $CI =& get_instance();
+    $table_data_row='<tr>';    
+    $table_data_row.='<td width="15%">'.$booking->start_time.'</td>';
+    $table_data_row.='<td width="20%">'.$booking->name.'</td>';
+    $table_data_row.='<td width="14%">'.$booking->booking_type.'</td>';
+    $table_data_row.='<td width="14%">'.$booking->booking_price.'</td>';
+    $table_data_row.='<td width="14%">'.$booking->first_name.' '.$booking->last_name.'</td>';
+    $table_data_row.='</tr>';
+    return $table_data_row;
+}
+
 ?>

@@ -4,6 +4,7 @@ echo form_open('rooms_booking/save/'.$booking_info->booking_id,array('id'=>'room
 
 <?php echo form_hidden('room_id',$room_id); ?>
 <?php echo form_hidden('booking_type'); ?>
+<p><?php echo $this->lang->line("rooms_booking_choose_booking_type"); ?></p>
 <table>
     <tr>
         <td>
@@ -11,7 +12,7 @@ echo form_open('rooms_booking/save/'.$booking_info->booking_id,array('id'=>'room
                 echo form_submit(array(
                     'name'=>'temp_booking',
                     'id'=>'temp_booking',
-                    'value'=>$this->lang->line('room_booking_temporaly_booking'),
+                    'value'=>$this->lang->line('rooms_booking_temporaly_booking'),
                     'class'=>'big_button')
                 );
             ?>
@@ -23,7 +24,7 @@ echo form_open('rooms_booking/save/'.$booking_info->booking_id,array('id'=>'room
                 echo form_submit(array(
                     'name'=>'night_booking',
                     'id'=>'night_booking',
-                    'value'=>$this->lang->line('room_booking_night_booking'),
+                    'value'=>$this->lang->line('rooms_booking_night_booking'),
                     'class'=>'big_button')
                 );
             ?>
@@ -54,7 +55,7 @@ $(document).ready(function()
             success:function(response)
             {
                 tb_remove();
-                post_room_book_form_submit(response);
+                refresh_page();
             },
             dataType:'json'
         });

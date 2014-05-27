@@ -3,6 +3,7 @@ echo form_open('rooms_booking/room_cancle/'.$booking_info->booking_id,array('id'
 ?>
 
 <?php echo form_hidden('is_cancle_booking'); ?>
+<p><?php echo $this->lang->line("rooms_booking_cancle_booking_comfirmation"); ?></p>
 <table>
     <tr>
         <td>
@@ -10,7 +11,7 @@ echo form_open('rooms_booking/room_cancle/'.$booking_info->booking_id,array('id'
                 echo form_submit(array(
                     'name'=>'ok',
                     'id'=>'ok',
-                    'value'=>$this->lang->line('room_booking_ok_caption'),
+                    'value'=>$this->lang->line('rooms_booking_ok_caption'),
                     'class'=>'big_button')
                 );
             ?>
@@ -22,7 +23,7 @@ echo form_open('rooms_booking/room_cancle/'.$booking_info->booking_id,array('id'
                 echo form_submit(array(
                     'name'=>'calcle',
                     'id'=>'cancle',
-                    'value'=>$this->lang->line('room_booking_cancle_caption'),
+                    'value'=>$this->lang->line('rooms_booking_cancle_caption'),
                     'class'=>'big_button')
                 );
             ?>
@@ -54,7 +55,7 @@ $(document).ready(function()
             success:function(response)
             {
                 tb_remove();
-                post_room_book_form_submit(response);
+                refresh_page();
             },
             dataType:'json'
         });
