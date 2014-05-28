@@ -41,39 +41,7 @@ echo form_open('config/save/',array('id'=>'config_form'));
 	</div>
 </div>
 
-<div class="field_row clearfix">	
-<?php echo form_label($this->lang->line('config_default_tax_rate_1').':', 'default_tax_1_rate',array('class'=>'wide required')); ?>
-	<div class='form_field'>
-	<?php echo form_input(array(
-		'name'=>'default_tax_1_name',
-		'id'=>'default_tax_1_name',
-		'size'=>'10',
-		'value'=>$this->config->item('default_tax_1_name')!==FALSE ? $this->config->item('default_tax_1_name') : $this->lang->line('items_sales_tax_1')));?>
-		
-	<?php echo form_input(array(
-		'name'=>'default_tax_1_rate',
-		'id'=>'default_tax_1_rate',
-		'size'=>'4',
-		'value'=>$this->config->item('default_tax_1_rate')));?>%
-	</div>
-</div>
 
-<div class="field_row clearfix">	
-<?php echo form_label($this->lang->line('config_default_tax_rate_2').':', 'default_tax_1_rate',array('class'=>'wide')); ?>
-	<div class='form_field'>
-	<?php echo form_input(array(
-		'name'=>'default_tax_2_name',
-		'id'=>'default_tax_2_name',
-		'size'=>'10',
-		'value'=>$this->config->item('default_tax_2_name')!==FALSE ? $this->config->item('default_tax_2_name') : $this->lang->line('items_sales_tax_2')));?>
-		
-	<?php echo form_input(array(
-		'name'=>'default_tax_2_rate',
-		'id'=>'default_tax_2_rate',
-		'size'=>'4',
-		'value'=>$this->config->item('default_tax_2_rate')));?>%
-	</div>
-</div>
 <!-- GARRISON MODIFIED 4/13/2013 -->
 <div class="field_row clearfix">	
 	<?php echo form_label($this->lang->line('config_currency_symbol').':', 'currency_symbol',array('class'=>'wide')); ?>
@@ -127,27 +95,12 @@ echo form_open('config/save/',array('id'=>'config_form'));
 	</div>
 </div>
 
-<div class="field_row clearfix">	
-<?php echo form_label($this->lang->line('common_return_policy').':', 'return_policy',array('class'=>'wide required')); ?>
-	<div class='form_field'>
-	<?php echo form_textarea(array(
-		'name'=>'return_policy',
-		'id'=>'return_policy',
-		'rows'=>'4',
-		'cols'=>'17',
-		'value'=>$this->config->item('return_policy')));?>
-	</div>
-</div>
 
 <div class="field_row clearfix">	
 <?php echo form_label($this->lang->line('config_language').':', 'language',array('class'=>'wide required')); ?>
 	<div class='form_field'>
 	<?php echo form_dropdown('language', array(
-			'Azerbaijan'		=> 'Azerbaijan',
-			'BahasaIndonesia'	=> 'BahasaIndonesia',
 			'english'			=> 'English',
-			'Spanish'			=> 'Spanish',
-			'Russian'			=> 'Russian',
 			'Thai'              => 'Thai'
 			), 
 		$this->config->item('language'));
@@ -256,117 +209,6 @@ echo form_open('config/save/',array('id'=>'config_form'));
 	</div>
 </div>
 
-<div class="field_row clearfix">	
-<?php echo form_label($this->lang->line('config_print_after_sale').':', 'print_after_sale',array('class'=>'wide')); ?>
-	<div class='form_field'>
-	<?php echo form_checkbox(array(
-		'name'=>'print_after_sale',
-		'id'=>'print_after_sale',
-		'value'=>'print_after_sale',
-		'checked'=>$this->config->item('print_after_sale')));?>
-	</div>
-</div>
-
-<div class="field_row clearfix">	
-<?php echo form_label($this->lang->line('config_custom1').':', 'website',array('class'=>'wide')); ?>
-	<div class='form_field'>
-	<?php echo form_input(array(
-		'name'=>'custom1_name',
-		'id'=>'custom1_name',
-		'value'=>$this->config->item('custom1_name')));?>
-	</div>
-</div>
-
-<div class="field_row clearfix">	
-<?php echo form_label($this->lang->line('config_custom2').':', 'website',array('class'=>'wide')); ?>
-	<div class='form_field'>
-	<?php echo form_input(array(
-		'name'=>'custom2_name',
-		'id'=>'custom2_name',
-		'value'=>$this->config->item('custom2_name')));?>
-	</div>
-</div>
-
-<div class="field_row clearfix">	
-<?php echo form_label($this->lang->line('config_custom3').':', 'website',array('class'=>'wide')); ?>
-	<div class='form_field'>
-	<?php echo form_input(array(
-		'name'=>'custom3_name',
-		'id'=>'custom3_name',
-		'value'=>$this->config->item('custom3_name')));?>
-	</div>
-</div>
-
-<div class="field_row clearfix">	
-<?php echo form_label($this->lang->line('config_custom4').':', 'website',array('class'=>'wide')); ?>
-	<div class='form_field'>
-	<?php echo form_input(array(
-		'name'=>'custom4_name',
-		'id'=>'custom4_name',
-		'value'=>$this->config->item('custom4_name')));?>
-	</div>
-</div>
-
-<div class="field_row clearfix">	
-<?php echo form_label($this->lang->line('config_custom5').':', 'website',array('class'=>'wide')); ?>
-	<div class='form_field'>
-	<?php echo form_input(array(
-		'name'=>'custom5_name',
-		'id'=>'custom5_name',
-		'value'=>$this->config->item('custom5_name')));?>
-	</div>
-</div>
-
-<div class="field_row clearfix">	
-<?php echo form_label($this->lang->line('config_custom6').':', 'website',array('class'=>'wide')); ?>
-	<div class='form_field'>
-	<?php echo form_input(array(
-		'name'=>'custom6_name',
-		'id'=>'custom6_name',
-		'value'=>$this->config->item('custom6_name')));?>
-	</div>
-</div>
-
-<div class="field_row clearfix">	
-<?php echo form_label($this->lang->line('config_custom7').':', 'website',array('class'=>'wide')); ?>
-	<div class='form_field'>
-	<?php echo form_input(array(
-		'name'=>'custom7_name',
-		'id'=>'custom7_name',
-		'value'=>$this->config->item('custom7_name')));?>
-	</div>
-</div>
-
-<div class="field_row clearfix">	
-<?php echo form_label($this->lang->line('config_custom8').':', 'website',array('class'=>'wide')); ?>
-	<div class='form_field'>
-	<?php echo form_input(array(
-		'name'=>'custom8_name',
-		'id'=>'custom8_name',
-		'value'=>$this->config->item('custom8_name')));?>
-	</div>
-</div>
-
-<div class="field_row clearfix">	
-<?php echo form_label($this->lang->line('config_custom9').':', 'website',array('class'=>'wide')); ?>
-	<div class='form_field'>
-	<?php echo form_input(array(
-		'name'=>'custom9_name',
-		'id'=>'custom9_name',
-		'value'=>$this->config->item('custom9_name')));?>
-	</div>
-</div>
-
-<div class="field_row clearfix">	
-<?php echo form_label($this->lang->line('config_custom10').':', 'website',array('class'=>'wide')); ?>
-	<div class='form_field'>
-	<?php echo form_input(array(
-		'name'=>'custom10_name',
-		'id'=>'custom10_name',
-		'value'=>$this->config->item('custom10_name')));?>
-	</div>
-</div>
-
 <?php 
 echo form_submit(array(
 	'name'=>'submit',
@@ -412,26 +254,14 @@ $(document).ready(function()
 			company: "required",
 			address: "required",
     		phone: "required",
-    		default_tax_rate:
-    		{
-    			required:true,
-    			number:true
-    		},
-    		email:"email",
-    		return_policy: "required"    		
+    		email:"email"    		
    		},
 		messages: 
 		{
      		company: "<?php echo $this->lang->line('config_company_required'); ?>",
      		address: "<?php echo $this->lang->line('config_address_required'); ?>",
      		phone: "<?php echo $this->lang->line('config_phone_required'); ?>",
-     		default_tax_rate:
-    		{
-    			required:"<?php echo $this->lang->line('config_default_tax_rate_required'); ?>",
-    			number:"<?php echo $this->lang->line('config_default_tax_rate_number'); ?>"
-    		},
-     		email: "<?php echo $this->lang->line('common_email_invalid_format'); ?>",
-     		return_policy:"<?php echo $this->lang->line('config_return_policy_required'); ?>"
+     		email: "<?php echo $this->lang->line('common_email_invalid_format'); ?>"
 	
 		}
 	});

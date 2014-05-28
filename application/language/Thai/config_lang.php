@@ -22,15 +22,5 @@ $lang['config_language'] = 'ภาษา';
 $lang['config_timezone'] = 'Timezone';
 $lang['config_currency_symbol'] = 'ลัญลักษณ์ค่าเงิน';
 $lang['config_currency_side'] = 'ด้านขวา'; //GARRISON ADDED 4/20/2013
-$lang['config_custom1'] = 'พื้นที่เพิ่มเติม 1'; //GARRISON ADDED 4/21/2013
-$lang['config_custom2'] = 'พื้นที่เพิ่มเติม 2'; //GARRISON ADDED 4/21/2013
-$lang['config_custom3'] = 'พื้นที่เพิ่มเติม 3'; //GARRISON ADDED 4/21/2013
-$lang['config_custom4'] = 'พื้นที่เพิ่มเติม 4'; //GARRISON ADDED 4/21/2013
-$lang['config_custom5'] = 'พื้นที่เพิ่มเติม 5'; //GARRISON ADDED 4/21/2013
-$lang['config_custom6'] = 'พื้นที่เพิ่มเติม 6'; //GARRISON ADDED 4/21/2013
-$lang['config_custom7'] = 'พื้นที่เพิ่มเติม 7'; //GARRISON ADDED 4/21/2013
-$lang['config_custom8'] = 'พื้นที่เพิ่มเติม 8'; //GARRISON ADDED 4/21/2013
-$lang['config_custom9'] = 'พื้นที่เพิ่มเติม 9'; //GARRISON ADDED 4/21/2013
-$lang['config_custom10'] = 'พื้นที่เพิ่มเติม 10'; //GARRISON ADDED 4/21/2013
 
 ?>

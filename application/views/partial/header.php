@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<base href="<?php echo base_url();?>" />
-	<title><?php echo $this->config->item('company').' -- '.$this->lang->line('common_powered_by').' Open Source Point Of Sale' ?></title>
+	<title><?php echo $this->config->item('company').' -- '.$this->lang->line('common_powered_by').' Motel Management System' ?></title>
 	<link rel="stylesheet" rev="stylesheet" href="<?php echo base_url();?>css/ospos.css" />
 	<link rel="stylesheet" rev="stylesheet" href="<?php echo base_url();?>css/ospos_print.css"  media="print"/>
 	<script>BASE_URL = '<?php echo site_url(); ?>';</script>
@@ -22,8 +22,9 @@
 	<script src="<?php echo base_url();?>js/common.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
 	<script src="<?php echo base_url();?>js/manage_tables.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
 	<script src="<?php echo base_url();?>js/swfobject.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
-	<script src="<?php echo base_url();?>js/date.js" type="text/javascript" language="javascript" charset="UTF-8"></script>	
-	
+	<script src="<?php echo base_url();?>js/date.js" type="text/javascript" language="javascript" charset="UTF-8"></script>		
+	<script src="<?php echo base_url();?>js/swfobject.js" type="text/javascript" language="javascript"></script>
+
 <style type="text/css">
 html {
     overflow: auto;
@@ -51,16 +52,26 @@ html {
 			</div>
 			<?php
 			}
-			?>
+			?>		
 		</div>
 
+        <div id="menubar_clock">
+               <object type="application/x-shockwave-flash" 
+                        data="<?php echo base_url().'xorAnalogClock.swf';?>" 
+                        width="80" height="80" id="xorAnalogClock" 
+                        style="visibility: visible;">
+                   <param name="scale" value="noscale">
+                   <param name="wmode" value="transparent">
+                   <param name="flashvars" value="clockSkin=<?php echo base_url().'images/menubar/clock_skin.png'?>&arrowSkin=1&arrowScale=40&arrowColor=ffffff"></object>
+        </div>
+            
 		<div id="menubar_footer">
 		<?php echo $this->lang->line('common_welcome')." $user_info->first_name $user_info->last_name! | "; ?>
 		<?php echo anchor("home/logout",$this->lang->line("common_logout")); ?>
 		</div>
 
 		<div id="menubar_date">
-		<?php echo $this->lang->line('common_current_time'). ' '.date('F d, Y h:i a') ?>
+		<?php echo $this->lang->line('common_current_time'). ' '.date('F d, Y') ?>
 		</div>
 
 	</div>

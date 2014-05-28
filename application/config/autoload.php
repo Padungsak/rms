@@ -96,7 +96,7 @@ $autoload['config'] = array();
 |
 */
 
-$autoload['language'] = array('common', 'config', 'employees', 'error', 'login', 'module', 'reports','giftcards','rooms_booking','rooms_manage');
+$autoload['language'] = array('common', 'config', 'employees', 'error', 'login', 'module', 'reports','rooms_booking','rooms_manage');
 
 
 /*
@@ -109,7 +109,7 @@ $autoload['language'] = array('common', 'config', 'employees', 'error', 'login',
 |
 */
 
-$autoload['model'] = array('Appconfig','Person','Employee','Module','Giftcard', 'Room', 'Booking_detail');
+$autoload['model'] = array('Appconfig','Person','Employee','Module', 'Room', 'Booking_detail');
 
 
 /* End of file autoload.php */

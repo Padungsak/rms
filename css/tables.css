@@ -47,11 +47,6 @@
 	margin-bottom:50px;
 }
 
-#table_rooms
-{
-	border: 1px solid #999;
-}
-
 #table_room_report_header
 {
 	position:relative;
@@ -155,4 +150,16 @@ table.innertable thead tr th
 table.innertable tbody tr td 
 {
 	background-color: #DDD;
+}
+
+table.table_rooms
+{
+	border: 5px solid #999;
+	border-spacing: 30px;
+    border-collapse: separate;
+}
+
+table.table_rooms td
+{
+	padding: 10px;
 }
