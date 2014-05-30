@@ -434,7 +434,9 @@ function get_rooms_booking_style($room, $controller)
             $interval;
             if($end_time > $current_time)
             {
-                $interval = $end_time->getTimestamp() - $current_time->getTimestamp();
+                //Change to support PHP5.2
+                //$interval = $end_time->getTimestamp() - $current_time->getTimestamp();
+                $interval = $end_time->format('U')- $current_time->format('U');
             }
             else 
             {
@@ -444,7 +446,7 @@ function get_rooms_booking_style($room, $controller)
             $room_style .=  "<script type=\"text/javascript\">
                              var myCountdownTest = new Countdown({
                                        time: $interval,
-                                       width   : 70, 
+                                       width   : 100, 
                                        height  : 40,
                                        style   : \"flip\",
                                        inline  : true, 

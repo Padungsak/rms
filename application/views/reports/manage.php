@@ -31,11 +31,11 @@ $(document).ready(function()
                     <label id="item_label" for="item">
                         <?php echo $this->lang->line('reports_start_date');?>                
                     </label>                   
-                    <?php echo form_input(array('id'=>'start_date','name'=>'start_date','type'=>'text'));?>
+                    <?php echo form_input(array('id'=>'start_date','name'=>'start_date','type'=>'text','value'=>$start_date));?>
                     <label id="item_label" for="item">
                         <?php echo $this->lang->line('reports_end_date');?>
                     </label>
-                    <?php echo form_input(array('id'=>'end_date','name'=>'end_date','type'=>'text'));?>
+                    <?php echo form_input(array('id'=>'end_date','name'=>'end_date','type'=>'text','value'=>$end_date));?>
                     <?php echo form_submit("get_report", $this->lang->line('reports_get_report'));?>  
                 </td>
                              
@@ -53,7 +53,7 @@ $(document).ready(function()
 <?php if($sum_price != null)
 { ?>
 <div id="report_summary">
-    <div class="summary_row"><?php echo $this->lang->line('reports_summary_income'). ': '.$sum_price; ?></div>
+    <div class="summary_row"><?php echo $this->lang->line('reports_summary_income'). ': '.to_currency($sum_price); ?></div>
 </div>
 <?php
 } ?>

@@ -14,6 +14,8 @@ $lang['rooms_manage_basic_information']='Room Information';
 $lang['rooms_manage_name_required']='Room Name is a required field';
 $lang['rooms_manage_temp_price_required']='Temporaly Price is a required field';
 $lang['rooms_manage_temp_price_number']='Temporaly price must be a number';
+$lang['rooms_manage_temp_duration_required']='Temporaly duration is a required field';
+$lang['rooms_manage_temp_duration_number']='Temporaly duration must be a number';
 $lang['rooms_manage_night_price_required']='Night Price is a required field';
 $lang['rooms_manage_night_price_number']='Night price must be a number';
 $lang['rooms_manage_no_rooms_to_display']='No Rooms to display';
@@ -26,4 +28,6 @@ $lang['rooms_manage_one_or_multiple']='room(s)';
 $lang['rooms_manage_cannot_be_deleted']='Could not deleted selected rooms';
 $lang['rooms_manage_available']='Available';
 $lang['rooms_manage_not_available']='Not available';
+$lang['rooms_manage_open_relay_url']='Open circuit url';
+$lang['rooms_manage_close_relay_url']='Close circuit url';
 ?>

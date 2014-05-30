@@ -29,6 +29,8 @@ class Rooms_manage extends Secure_area implements iData_controller
         'tempPrice'=>$this->input->post('tempPrice'),
         'temp_duration'=>$this->input->post('temp_duration'),
         'nightPrice'=>$this->input->post('nightPrice'),
+        'open_url'=>$this->input->post('open_url'),
+        'close_url'=>$this->input->post('close_url'),
         'status'=>$this->input->post('status')
         );
 

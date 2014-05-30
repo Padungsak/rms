@@ -29,7 +29,9 @@ class Rooms_booking extends Secure_area
             $booking_data['booking_price']  = $room_info->tempPrice;
                         
             $time_offset = $room_info->temp_duration;
-            $current_time->add(new  DateInterval('PT'.$time_offset.'H'));
+            //Change below line to make it support PHP5.2
+			//$current_time->add(new  DateInterval('PT'.$time_offset.'H'));
+            $current_time->modify('+'.$time_offset.'hour');
             $booking_data['end_time'] = $current_time->format('Y-m-d H:i:s');  
         }
         else 
@@ -47,6 +49,7 @@ class Rooms_booking extends Secure_area
 
         if( $this->Booking_detail->save( $booking_data, $booking_id ) )
         {
+            $this->execute_relay_url($room_info->open_url);
             echo json_encode(array('success'=>true,'message'=>$this->lang->line('rooms_booking_successful_booking').' '.
             $room_info->name,'booking_id'=>$booking_data['booking_id']));
             $booking_id = $booking_data['booking_id'];
@@ -85,6 +88,9 @@ class Rooms_booking extends Secure_area
     function room_check_out($booking_id)
     {
         $this->Booking_detail->update_booking_status($booking_id, 'close');
+        $booking_detail = $this->Booking_detail->get_info($booking_id); 
+        $room_info = $this->Room->get_info($booking_detail->room_id);        
+        $this->execute_relay_url($room_info->close_url);  
     }
     
     function room_cancle($booking_id)
@@ -94,13 +100,25 @@ class Rooms_booking extends Secure_area
         {
             $this->Booking_detail->update_booking_status($booking_id, 'close');
             $booking_info = $this->Booking_detail->get_info($booking_id);
-            $room = $this->Room->get_info($booking_info->room_id);
+            $room_info = $this->Room->get_info($booking_info->room_id); 
+            $this->execute_relay_url($room_info->close_url);                       
             echo json_encode(array('success'=>true,'message'=>$this->lang->line('rooms_booking_successful_calcle').' '.$room->name));
         }
         else 
         {
 	        echo json_encode(array('success'=>true));
         }                    
+    }
+    
+    function execute_relay_url($url)
+    {
+        $ch = curl_init();    
+        curl_setopt($ch, CURLOPT_URL,$url);          
+        curl_setopt($ch, CURLOPT_TIMEOUT, 4);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER,true); // return into a variable    
+        $server_output = curl_exec($ch);  
+        curl_close($ch);  
+
     }
 }
 ?>

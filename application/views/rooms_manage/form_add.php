@@ -8,7 +8,7 @@ echo form_open('rooms_manage/save/'.$room_info->room_id,array('id'=>'room_add_fo
 <legend><?php echo $this->lang->line("rooms_manage_basic_information"); ?></legend>
 
 <div class="field_row clearfix">
-<?php echo form_label($this->lang->line('rooms_manage_room_name').':', 'name',array('class'=>'wide')); ?>
+<?php echo form_label($this->lang->line('rooms_manage_room_name').':', 'name',array('class'=>'required wide')); ?>
     <div class='form_field'>
     <?php echo form_input(array(
         'name'=>'name',
@@ -30,7 +30,7 @@ echo form_open('rooms_manage/save/'.$room_info->room_id,array('id'=>'room_add_fo
 </div>
 
 <div class="field_row clearfix">
-<?php echo form_label($this->lang->line('rooms_manage_temporaly_renting_price').':', 'tempPrice',array('class'=>'wide')); ?>
+<?php echo form_label($this->lang->line('rooms_manage_temporaly_renting_price').':', 'tempPrice',array('class'=>'required wide')); ?>
     <div class='form_field'>
     <?php echo form_input(array(
         'name'=>'tempPrice',
@@ -41,7 +41,7 @@ echo form_open('rooms_manage/save/'.$room_info->room_id,array('id'=>'room_add_fo
 </div>
 
 <div class="field_row clearfix">
-<?php echo form_label($this->lang->line('rooms_manage_temporaly_renting_duration').':', 'temp_duration',array('class'=>'wide')); ?>
+<?php echo form_label($this->lang->line('rooms_manage_temporaly_renting_duration').':', 'temp_duration',array('class'=>'required wide')); ?>
     <div class='form_field'>
     <?php echo form_input(array(
         'name'=>'temp_duration',
@@ -53,12 +53,34 @@ echo form_open('rooms_manage/save/'.$room_info->room_id,array('id'=>'room_add_fo
 
 
 <div class="field_row clearfix">
-<?php echo form_label($this->lang->line('rooms_manage_night_renting_price').':', 'nightPrice',array('class'=>'wide')); ?>
+<?php echo form_label($this->lang->line('rooms_manage_night_renting_price').':', 'nightPrice',array('class'=>'required wide')); ?>
     <div class='form_field'>
     <?php echo form_input(array(
         'name'=>'nightPrice',
         'id'=>'nightPrice',
         'value'=>$room_info->nightPrice)
+    );?>
+    </div>
+</div>
+
+<div class="field_row clearfix">
+<?php echo form_label($this->lang->line('rooms_manage_open_relay_url').':', 'open_url',array('class'=>'required wide')); ?>
+    <div class='form_field'>
+    <?php echo form_input(array(
+        'name'=>'open_url',
+        'id'=>'open_url',
+        'value'=>$room_info->open_url)
+    );?>
+    </div>
+</div>
+
+<div class="field_row clearfix">
+<?php echo form_label($this->lang->line('rooms_manage_close_relay_url').':', 'close_url',array('class'=>'required wide')); ?>
+    <div class='form_field'>
+    <?php echo form_input(array(
+        'name'=>'close_url',
+        'id'=>'close_url',
+        'value'=>$room_info->close_url)
     );?>
     </div>
 </div>
@@ -115,7 +137,11 @@ $(document).ready(function()
                 required:true,
                 number:true
             },
-
+            temp_duration:
+           {
+               required:true,
+                number:true
+           },
             nightPrice:
             {
                 required:true,
@@ -130,6 +156,11 @@ $(document).ready(function()
             {
                 required:"<?php echo $this->lang->line('rooms_manage_temp_price_required'); ?>",
                 number:"<?php echo $this->lang->line('rooms_manage_temp_price_number'); ?>"
+            },
+            temp_duration:
+            {
+                required:"<?php echo $this->lang->line('rooms_manage_temp_duration_required'); ?>",
+                number:"<?php echo $this->lang->line('rooms_manage_temp_duration_number'); ?>"
             },
             nightPrice:
             {

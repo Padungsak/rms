@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2014 at 12:39 PM
+-- Generation Time: May 30, 2014 at 06:33 AM
 -- Server version: 5.5.34
 -- PHP Version: 5.4.22
 
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `ospos_booking_detail` (
   PRIMARY KEY (`booking_id`),
   KEY `person_id` (`person_id`),
   KEY `person_id_2` (`person_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=211 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=226 ;
 
 --
 -- Dumping data for table `ospos_booking_detail`
@@ -108,7 +108,7 @@ INSERT INTO `ospos_booking_detail` (`booking_id`, `room_id`, `booking_type`, `bo
 (186, 18, 'temporaly', 100, '2014-05-27 10:43:20', '2014-05-27 13:43:20', 1, 'close'),
 (187, 15, 'temporaly', 300, '2014-05-27 10:44:17', '2014-05-27 13:44:17', 1, 'close'),
 (188, 18, 'temporaly', 100, '2014-05-28 00:20:57', '2014-05-28 03:20:57', 1, 'close'),
-(189, 35, 'night', 100, '2014-05-28 00:21:08', '2014-05-29 05:00:00', 1, 'open'),
+(189, 35, 'night', 100, '2014-05-28 00:21:08', '2014-05-29 05:00:00', 1, 'close'),
 (190, 36, 'temporaly', 300, '2014-05-28 00:21:15', '2014-05-28 03:21:15', 1, 'close'),
 (191, 37, 'temporaly', 300, '2014-05-28 00:21:20', '2014-05-28 03:21:20', 1, 'close'),
 (192, 34, 'temporaly', 300, '2014-05-28 00:21:27', '2014-05-28 03:21:27', 1, 'close'),
@@ -117,19 +117,30 @@ INSERT INTO `ospos_booking_detail` (`booking_id`, `room_id`, `booking_type`, `bo
 (195, 18, 'temporaly', 100, '2014-05-28 00:23:00', '2014-05-28 03:23:00', 1, 'close'),
 (196, 18, 'temporaly', 100, '2014-05-28 00:23:00', '2014-05-28 03:23:00', 1, 'close'),
 (197, 15, 'temporaly', 300, '2014-05-28 00:23:06', '2014-05-28 03:23:06', 1, 'close'),
-(198, 16, 'night', 1000, '2014-05-28 00:23:13', '2014-05-29 05:00:00', 1, 'open'),
+(198, 16, 'night', 1000, '2014-05-28 00:23:13', '2014-05-29 05:00:00', 1, 'close'),
 (199, 18, 'night', 1000, '2014-05-28 00:23:20', '2014-05-29 05:00:00', 1, 'close'),
 (200, 18, 'night', 1000, '2014-05-28 00:23:28', '2014-05-29 05:00:00', 1, 'close'),
 (201, 34, 'temporaly', 300, '2014-05-28 00:23:48', '2014-05-28 03:23:48', 1, 'close'),
 (202, 36, 'temporaly', 300, '2014-05-28 00:23:55', '2014-05-28 03:23:55', 1, 'close'),
 (203, 18, 'temporaly', 100, '2014-05-28 00:24:32', '2014-05-28 03:24:32', 1, 'close'),
-(204, 15, 'temporaly', 300, '2014-05-28 08:19:54', '2014-05-28 11:19:54', 1, 'open'),
-(205, 18, 'temporaly', 100, '2014-05-28 08:20:04', '2014-05-28 11:20:04', 1, 'open'),
-(206, 34, 'temporaly', 300, '2014-05-28 08:20:11', '2014-05-28 11:20:11', 1, 'open'),
-(207, 36, 'temporaly', 300, '2014-05-28 08:20:18', '2014-05-28 11:20:18', 1, 'open'),
-(208, 37, 'temporaly', 300, '2014-05-28 08:21:19', '2014-05-28 11:21:19', 1, 'open'),
-(209, 38, 'temporaly', 250, '2014-05-28 09:58:04', '2014-05-28 12:58:04', 1, 'open'),
-(210, 39, 'temporaly', 250, '2014-05-28 09:58:11', '2014-05-28 12:58:11', 1, 'open');
+(204, 15, 'temporaly', 300, '2014-05-28 08:19:54', '2014-05-28 11:19:54', 1, 'close'),
+(205, 18, 'temporaly', 100, '2014-05-28 08:20:04', '2014-05-28 11:20:04', 1, 'close'),
+(206, 34, 'temporaly', 300, '2014-05-28 08:20:11', '2014-05-28 11:20:11', 1, 'close'),
+(207, 36, 'temporaly', 300, '2014-05-28 08:20:18', '2014-05-28 11:20:18', 1, 'close'),
+(208, 37, 'temporaly', 300, '2014-05-28 08:21:19', '2014-05-28 11:21:19', 1, 'close'),
+(209, 38, 'temporaly', 250, '2014-05-28 09:58:04', '2014-05-28 12:58:04', 1, 'close'),
+(210, 39, 'temporaly', 250, '2014-05-28 09:58:11', '2014-05-28 12:58:11', 1, 'close'),
+(211, 15, 'temporaly', 300, '2014-05-29 12:59:01', '2014-05-29 15:59:01', 1, 'close'),
+(212, 15, 'temporaly', 300, '2014-05-29 12:59:44', '2014-05-29 15:59:44', 1, 'close'),
+(213, 15, 'temporaly', 300, '2014-05-29 13:01:09', '2014-05-29 16:01:09', 1, 'close'),
+(214, 40, 'temporaly', 400, '2014-05-29 13:04:58', '2014-05-29 16:04:58', 1, 'close'),
+(219, 42, 'temporaly', 300, '2014-05-29 15:36:28', '2014-05-29 18:36:28', 1, 'close'),
+(220, 43, 'temporaly', 300, '2014-05-29 15:44:33', '2014-05-29 19:44:33', 1, 'close'),
+(221, 42, 'temporaly', 300, '2014-05-29 15:44:39', '2014-05-29 18:44:39', 1, 'close'),
+(222, 43, 'temporaly', 300, '2014-05-29 17:03:50', '2014-05-29 21:03:50', 1, 'close'),
+(223, 42, 'temporaly', 300, '2014-05-29 23:51:36', '2014-05-30 02:51:36', 1, 'close'),
+(224, 43, 'temporaly', 300, '2014-05-29 23:51:49', '2014-05-30 03:51:49', 1, 'close'),
+(225, 44, 'night', 500, '2014-05-30 00:10:55', '2014-05-31 05:00:00', 1, 'open');
 
 -- --------------------------------------------------------
 
@@ -249,43 +260,48 @@ CREATE TABLE IF NOT EXISTS `ospos_rooms` (
   `tempPrice` int(11) NOT NULL,
   `temp_duration` int(11) NOT NULL,
   `nightPrice` int(11) NOT NULL,
+  `open_url` varchar(255) NOT NULL,
+  `close_url` varchar(255) NOT NULL,
   `status` tinyint(4) NOT NULL,
   `deleted` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`room_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=45 ;
 
 --
 -- Dumping data for table `ospos_rooms`
 --
 
-INSERT INTO `ospos_rooms` (`room_id`, `name`, `description`, `tempPrice`, `temp_duration`, `nightPrice`, `status`, `deleted`) VALUES
-(15, 'Room1', 'room one', 300, 3, 600, 1, 0),
-(16, 'Room2', 'room two', 300, 3, 1000, 1, 0),
-(17, 'Room10', 'room ten', 300, 3, 600, 1, 1),
-(18, 'Room3', 'room three', 100, 3, 1000, 1, 0),
-(19, 'Room3', 'room three', 100, 3, 1000, 1, 1),
-(20, 'room4', 'room four', 100, 10, 1000, 1, 1),
-(21, 'room5', 'room five', 10, 10, 10, 0, 1),
-(22, 'room6', 'room six', 10, 10, 10, 0, 1),
-(23, 'Room7', 'room seven', 1, 2, 2, 0, 1),
-(24, 'Room8', 'Room eight', 11, 1, 1, 0, 1),
-(25, 'room9', 'room nine', 100, 10, 100, 1, 1),
-(26, 'qqq', 'qqq', 1000, 1, 1, 1, 1),
-(27, 'www', 'www', 1, 1, 1, 1, 1),
-(28, 'eee', 'eee', 100, 3, 100, 1, 1),
-(29, 'rrr', 'rrr', 12, 12, 12, 1, 1),
-(30, 'aaa', 'aaa', 1, 1, 1, 1, 1),
-(31, 'zzz', 'zzz', 1000, 3, 100, 0, 1),
-(32, 'xxx', 'xxx', 100, 3, 100, 1, 1),
-(33, 'xxx', 'xxx', 100, 3, 100, 1, 1),
-(34, 'room4', 'room four', 300, 3, 1000, 1, 0),
-(35, 'Room5', 'Room five', 100, 10, 100, 1, 0),
-(36, 'Room6', 'Room six', 300, 3, 1000, 1, 0),
-(37, 'Room7', 'Room seven', 300, 3, 600, 1, 0),
-(38, 'Room8', 'Room eigth', 250, 3, 600, 1, 0),
-(39, 'Room9', 'Room nine', 250, 3, 600, 1, 0),
-(40, 'Room10', 'Room ten', 400, 3, 1000, 1, 0),
-(41, 'Room11', 'Room eleven', 400, 3, 1000, 1, 0);
+INSERT INTO `ospos_rooms` (`room_id`, `name`, `description`, `tempPrice`, `temp_duration`, `nightPrice`, `open_url`, `close_url`, `status`, `deleted`) VALUES
+(15, 'Room1', 'room one', 300, 3, 600, '', '', 1, 1),
+(16, 'Room2', 'room two', 300, 3, 1000, '', '', 1, 1),
+(17, 'Room10', 'room ten', 300, 3, 600, '', '', 1, 1),
+(18, 'Room3', 'room three', 100, 3, 1000, '', '', 1, 1),
+(19, 'Room3', 'room three', 100, 3, 1000, '', '', 1, 1),
+(20, 'room4', 'room four', 100, 10, 1000, '', '', 1, 1),
+(21, 'room5', 'room five', 10, 10, 10, '', '', 0, 1),
+(22, 'room6', 'room six', 10, 10, 10, '', '', 0, 1),
+(23, 'Room7', 'room seven', 1, 2, 2, '', '', 0, 1),
+(24, 'Room8', 'Room eight', 11, 1, 1, '', '', 0, 1),
+(25, 'room9', 'room nine', 100, 10, 100, '', '', 1, 1),
+(26, 'qqq', 'qqq', 1000, 1, 1, '', '', 1, 1),
+(27, 'www', 'www', 1, 1, 1, '', '', 1, 1),
+(28, 'eee', 'eee', 100, 3, 100, '', '', 1, 1),
+(29, 'rrr', 'rrr', 12, 12, 12, '', '', 1, 1),
+(30, 'aaa', 'aaa', 1, 1, 1, '', '', 1, 1),
+(31, 'zzz', 'zzz', 1000, 3, 100, '', '', 0, 1),
+(32, 'xxx', 'xxx', 100, 3, 100, '', '', 1, 1),
+(33, 'xxx', 'xxx', 100, 3, 100, '', '', 1, 1),
+(34, 'room4', 'room four', 300, 3, 1000, '', '', 1, 1),
+(35, 'Room5', 'Room five', 100, 10, 100, '', '', 1, 1),
+(36, 'Room6', 'Room six', 300, 3, 1000, '', '', 1, 1),
+(37, 'Room7', 'Room seven', 300, 3, 600, '', '', 1, 1),
+(38, 'Room8', 'Room eigth', 250, 3, 600, '', '', 1, 1),
+(39, 'Room9', 'Room nine', 250, 3, 600, '', '', 1, 1),
+(40, 'Room10', 'Room ten', 400, 3, 1000, '', '', 1, 1),
+(41, 'Room11', 'Room eleven', 400, 3, 1000, '', '', 1, 1),
+(42, 'Room01', 'Room one', 300, 3, 600, '192.168.1.99/1234/6/?11&', '192.168.1.99/1234/6/?01&', 1, 0),
+(43, 'Room02', 'Room two', 300, 4, 700, '192.168.1.99/1234/6/?12&', '192.168.1.99/1234/6/?02&', 1, 0),
+(44, 'Room03', 'Room three', 250, 3, 500, '192.168.1.99/1234/6/?13&', '192.168.1.99/1234/6/?03&', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -307,11 +323,9 @@ CREATE TABLE IF NOT EXISTS `ospos_sessions` (
 --
 
 INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('06e86df96ab89d7c942094f392f929b2', '0.0.0.0', 'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Spark/2.x Safari/537.31', 1401270900, 'a:2:{s:9:"user_data";s:0:"";s:9:"person_id";s:1:"1";}'),
-('43cd4f21cc93da18e3f0c26f39a75658', '0.0.0.0', 'Mozilla/5.0 (Windows NT 6.2; rv:29.0) Gecko/20100101 Firefox/29.0 FirePHP/0.7.4', 1401267972, 'a:2:{s:9:"user_data";s:0:"";s:9:"person_id";s:1:"1";}'),
-('525602b118548c27a013e443e9fa92f0', '0.0.0.0', 'Mozilla/5.0 (Windows NT 6.2; rv:29.0) Gecko/20100101 Firefox/29.0', 1401273004, 'a:2:{s:9:"user_data";s:0:"";s:9:"person_id";s:1:"1";}'),
-('7049e7d275818ffd01aae6a933a426c3', '0.0.0.0', 'Mozilla/5.0 (Windows NT 6.2; rv:29.0) Gecko/20100101 Firefox/29.0', 1401267902, 'a:2:{s:9:"user_data";s:0:"";s:9:"person_id";s:1:"1";}'),
-('9bace9bcbcd985b40aae72be0e867b74', '0.0.0.0', 'Mozilla/5.0 (Windows NT 6.2; rv:29.0) Gecko/20100101 Firefox/29.0', 1401273005, 'a:2:{s:9:"user_data";s:0:"";s:9:"person_id";s:1:"1";}');
+('457d042b569fec6627e570673d46680b', '0.0.0.0', 'Mozilla/5.0 (Windows NT 6.2; rv:29.0) Gecko/20100101 Firefox/29.0', 1401383025, 'a:2:{s:9:"user_data";s:0:"";s:9:"person_id";s:1:"1";}'),
+('607c034b63672f85c065de4cb70fce68', '0.0.0.0', 'Mozilla/5.0 (Windows NT 6.2; rv:29.0) Gecko/20100101 Firefox/29.0', 1401422970, 'a:2:{s:9:"user_data";s:0:"";s:9:"person_id";s:1:"1";}'),
+('c30c1de8dc87d204030e251764f35da0', '0.0.0.0', 'Mozilla/5.0 (Windows NT 6.2; rv:29.0) Gecko/20100101 Firefox/29.0', 1401408519, 'a:2:{s:9:"user_data";s:0:"";s:9:"person_id";s:1:"1";}');
 
 --
 -- Constraints for dumped tables
